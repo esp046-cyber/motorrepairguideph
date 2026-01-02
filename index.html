@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moto Repair Guide PH 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 1%;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e94560 0%, #c42847 100%);
+            padding: 12px 1%;
+            border-radius: 8px;
+            margin-bottom: 1%;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 11px;
+            color: #ffd6e0;
+            margin-top: 4px;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1%;
+            margin-bottom: 1%;
+        }
+        
+        .category-card {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #e94560;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+            border-color: #ff6b88;
+        }
+        
+        .category-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        
+        .category-card h3 {
+            font-size: 13px;
+            color: #e94560;
+            margin-bottom: 3px;
+        }
+        
+        .category-card p {
+            font-size: 10px;
+            color: #b0b0b0;
+        }
+        
+        .content-area {
+            background: #0f3460;
+            padding: 1%;
+            border-radius: 10px;
+            border: 1px solid #1f4068;
+            display: none;
+        }
+        
+        .content-area.active {
+            display: block;
+        }
+        
+        .back-btn {
+            background: #e94560;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 1%;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #c42847;
+        }
+        
+        .repair-item {
+            background: #16213e;
+            padding: 12px;
+            margin-bottom: 1%;
+            border-radius: 8px;
+            border-left: 3px solid #e94560;
+        }
+        
+        .repair-item h4 {
+            font-size: 13px;
+            color: #ff6b88;
+            margin-bottom: 6px;
+        }
+        
+        .repair-item p {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #d0d0d0;
+        }
+        
+        .steps {
+            margin-top: 6px;
+        }
+        
+        .step {
+            background: #1a1a2e;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 11px;
+            border-left: 2px solid #00d9ff;
+        }
+        
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 3px solid #ff9800;
+            padding: 8px;
+            margin: 1% 0;
+            border-radius: 5px;
+            font-size: 10px;
+            color: #ffb74d;
+        }
+        
+        .tip {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid #4caf50;
+            padding: 8px;
+            margin: 1% 0;
+            border-radius: 5px;
+            font-size: 10px;
+            color: #81c784;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 14px 1%;
+            color: #888;
+            font-size: 10px;
+            margin-top: 1%;
+        }
+        
+        #mainMenu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏍️ Moto Repair Guide PH</h1>
+        <p>Kompletong gabay sa pag-aayos ng motorsiklo - 2026</p>
+    </div>
+
+    <div id="mainMenu">
+        <div class="categories">
+            <div class="category-card" data-section="engine">
+                <div class="category-icon">⚙️</div>
+                <h3>Engine</h3>
+                <p>Makina</p>
+            </div>
+            
+            <div class="category-card" data-section="electrical">
+                <div class="category-icon">⚡</div>
+                <h3>Electrical</h3>
+                <p>Kuryente</p>
+            </div>
+            
+            <div class="category-card" data-section="brakes">
+                <div class="category-icon">🛑</div>
+                <h3>Brakes</h3>
+                <p>Preno</p>
+            </div>
+            
+            <div class="category-card" data-section="transmission">
+                <div class="category-icon">🔧</div>
+                <h3>Transmission</h3>
+                <p>Clutch</p>
+            </div>
+            
+            <div class="category-card" data-section="suspension">
+                <div class="category-icon">🛞</div>
+                <h3>Suspension</h3>
+                <p>Gulong</p>
+            </div>
+            
+            <div class="category-card" data-section="maintenance">
+                <div class="category-icon">🔍</div>
+                <h3>Maintenance</h3>
+                <p>Check-up</p>
+            </div>
+            
+            <div class="category-card" data-section="carburetor">
+                <div class="category-icon">⛽</div>
+                <h3>Carburetor</h3>
+                <p>Fuel</p>
+            </div>
+            
+            <div class="category-card" data-section="cooling">
+                <div class="category-icon">🌡️</div>
+                <h3>Cooling</h3>
+                <p>Lamig</p>
+            </div>
+            
+            <div class="category-card" data-section="bodyframe">
+                <div class="category-icon">🛡️</div>
+                <h3>Body</h3>
+                <p>Frame</p>
+            </div>
+            
+            <div class="category-card" data-section="troubleshoot">
+                <div class="category-icon">🔎</div>
+                <h3>Troubleshoot</h3>
+                <p>Problems</p>
+            </div>
+            
+            <div class="category-card" data-section="tools">
+                <div class="category-icon">🔨</div>
+                <h3>Tools</h3>
+                <p>Gamit</p>
+            </div>
+            
+            <div class="category-card" data-section="emergency">
+                <div class="category-icon">🚨</div>
+                <h3>Emergency</h3>
+                <p>Roadside</p>
+            </div>
+            
+            <div class="category-card" data-section="performance">
+                <div class="category-icon">⚡</div>
+                <h3>Performance</h3>
+                <p>Upgrade</p>
+            </div>
+            
+            <div class="category-card" data-section="tires">
+                <div class="category-icon">🏁</div>
+                <h3>Tires</h3>
+                <p>Gulong</p>
+            </div>
+            
+            <div class="category-card" data-section="fuelsystem">
+                <div class="category-icon">⛽</div>
+                <h3>Fuel System</h3>
+                <p>Advanced</p>
+            </div>
+            
+            <div class="category-card" data-section="steering">
+                <div class="category-icon">🎯</div>
+                <h3>Steering</h3>
+                <p>Manibela</p>
+            </div>
+            
+            <div class="category-card" data-section="lights">
+                <div class="category-icon">💡</div>
+                <h3>Lights</h3>
+                <p>Ilaw</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="engineContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Engine Starting Problems</h4>
+            <p>Kapag hindi umaandar:</p>
+            <div class="steps">
+                <div class="step">1. Check fuel - may gas ba?</div>
+                <div class="step">2. Spark plug - linisin o palitan</div>
+                <div class="step">3. Battery connections - tight</div>
+                <div class="step">4. Fuel petcock - bukas ba?</div>
+            </div>
+            <div class="warning">⚠️ Huwag i-force starter ng matagal</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Overheating</h4>
+            <p>Kung mainit sobra:</p>
+            <div class="steps">
+                <div class="step">1. Stop motor, lumamig 15-20 min</div>
+                <div class="step">2. Check coolant level</div>
+                <div class="step">3. Linisin radiator fins</div>
+                <div class="step">4. Check oil level</div>
+            </div>
+            <div class="tip">💡 Oil change every 1,000-2,000 km</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Oil Change</h4>
+            <p>Paano magpalit:</p>
+            <div class="steps">
+                <div class="step">1. Init motor 3-5 min</div>
+                <div class="step">2. Tanggal drain bolt</div>
+                <div class="step">3. Palit oil filter</div>
+                <div class="step">4. Balik drain bolt</div>
+                <div class="step">5. Lagay bagong oil</div>
+                <div class="step">6. Check level</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="electricalContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Battery Care</h4>
+            <p>Pag-aalaga:</p>
+            <div class="steps">
+                <div class="step">1. Linisin terminals</div>
+                <div class="step">2. Grease terminals</div>
+                <div class="step">3. Check water level</div>
+                <div class="step">4. Charge if needed</div>
+            </div>
+            <div class="warning">⚠️ Iwas short circuit</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Headlight Fix</h4>
+            <p>Kung patay ilaw:</p>
+            <div class="steps">
+                <div class="step">1. Palit bulb</div>
+                <div class="step">2. Check fuse</div>
+                <div class="step">3. Test switch</div>
+                <div class="step">4. Check wiring</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="brakesContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Brake Pads</h4>
+            <p>Pagpalit:</p>
+            <div class="steps">
+                <div class="step">1. Tanggal gulong</div>
+                <div class="step">2. Remove caliper</div>
+                <div class="step">3. Tanggal old pads</div>
+                <div class="step">4. Push piston</div>
+                <div class="step">5. Install new pads</div>
+                <div class="step">6. Pump brake</div>
+            </div>
+            <div class="warning">⚠️ Critical sa safety</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Brake Bleeding</h4>
+            <p>Pag-alis ng hangin:</p>
+            <div class="steps">
+                <div class="step">1. Puno master cylinder</div>
+                <div class="step">2. Tube sa bleeder</div>
+                <div class="step">3. Buksan, pump lever</div>
+                <div class="step">4. Ulitin till no bubbles</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="transmissionContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Clutch Adjust</h4>
+            <p>Pag-adjust:</p>
+            <div class="steps">
+                <div class="step">1. Find adjuster</div>
+                <div class="step">2. Set 10-20mm free play</div>
+                <div class="step">3. Lock nut</div>
+                <div class="step">4. Test shift</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Chain Care</h4>
+            <p>Maintenance:</p>
+            <div class="steps">
+                <div class="step">1. Linisin with kerosene</div>
+                <div class="step">2. Patuyuin</div>
+                <div class="step">3. Lagyan lube</div>
+                <div class="step">4. Adjust 20-30mm slack</div>
+                <div class="step">5. Align sprockets</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="suspensionContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Tire Pressure</h4>
+            <p>Tamang presyon:</p>
+            <div class="steps">
+                <div class="step">Front: 28-32 PSI</div>
+                <div class="step">Rear: 32-36 PSI</div>
+                <div class="step">Check weekly</div>
+            </div>
+            <div class="tip">💡 Tama = safe + tipid</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Shock Problems</h4>
+            <p>Kung may issue:</p>
+            <div class="steps">
+                <div class="step">1. Check oil leak</div>
+                <div class="step">2. Test bounce</div>
+                <div class="step">3. Tight bolts</div>
+                <div class="step">4. Replace if bad</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="maintenanceContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Weekly Check</h4>
+            <div class="steps">
+                <div class="step">✓ Tire pressure</div>
+                <div class="step">✓ Brakes</div>
+                <div class="step">✓ Chain</div>
+                <div class="step">✓ Lights</div>
+                <div class="step">✓ Oil level</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Monthly Check</h4>
+            <div class="steps">
+                <div class="step">✓ Spark plug</div>
+                <div class="step">✓ Air filter</div>
+                <div class="step">✓ Battery water</div>
+                <div class="step">✓ Brake pads</div>
+                <div class="step">✓ Full cleaning</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="carburetorContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Carb Cleaning</h4>
+            <p>Paglinis:</p>
+            <div class="steps">
+                <div class="step">1. Close petcock</div>
+                <div class="step">2. Disconnect cables</div>
+                <div class="step">3. Remove carb</div>
+                <div class="step">4. Clean jets</div>
+                <div class="step">5. Blow air</div>
+                <div class="step">6. Reassemble</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Mixture Adjust</h4>
+            <p>Tuning:</p>
+            <div class="steps">
+                <div class="step">1. Warm engine</div>
+                <div class="step">2. Find air screw</div>
+                <div class="step">3. Turn in, back 1.5 turns</div>
+                <div class="step">4. Adjust idle</div>
+                <div class="step">5. Fine tune</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="coolingContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Coolant Change</h4>
+            <p>Pagpalit:</p>
+            <div class="steps">
+                <div class="step">1. Let cool - NEVER hot!</div>
+                <div class="step">2. Remove cap, drain</div>
+                <div class="step">3. Flush with water</div>
+                <div class="step">4. Fill new coolant</div>
+                <div class="step">5. Bleed air</div>
+            </div>
+            <div class="warning">⚠️ Hot coolant = burns!</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Radiator Care</h4>
+            <p>Maintenance:</p>
+            <div class="steps">
+                <div class="step">1. Clean fins</div>
+                <div class="step">2. Remove bugs</div>
+                <div class="step">3. Check leaks</div>
+                <div class="step">4. Tight clamps</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bodyframeContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Rust Removal</h4>
+            <p>Pag-alis:</p>
+            <div class="steps">
+                <div class="step">1. Wire brush</div>
+                <div class="step">2. Rust remover</div>
+                <div class="step">3. Sand smooth</div>
+                <div class="step">4. Prime</div>
+                <div class="step">5. Paint</div>
+            </div>
+            <div class="tip">💡 Wax regularly</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Frame Check</h4>
+            <p>Inspection:</p>
+            <div class="steps">
+                <div class="step">1. Clean frame</div>
+                <div class="step">2. Check welds</div>
+                <div class="step">3. Look for cracks</div>
+                <div class="step">4. Test for play</div>
+            </div>
+            <div class="warning">⚠️ Cracks = serious!</div>
+        </div>
+    </div>
+
+    <div id="troubleshootContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Engine Sounds</h4>
+            <div class="steps">
+                <div class="step">• TICKING - valves, oil</div>
+                <div class="step">• KNOCKING - detonation</div>
+                <div class="step">• SQUEALING - belt</div>
+                <div class="step">• RATTLING - loose parts</div>
+                <div class="step">• GRINDING - transmission</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Smoke Colors</h4>
+            <div class="steps">
+                <div class="step">• WHITE - coolant leak</div>
+                <div class="step">• BLUE - burning oil</div>
+                <div class="step">• BLACK - rich mixture</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toolsContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Basic Tools</h4>
+            <div class="steps">
+                <div class="step">✓ Socket set 8-19mm</div>
+                <div class="step">✓ Wrenches</div>
+                <div class="step">✓ Screwdrivers</div>
+                <div class="step">✓ Pliers</div>
+                <div class="step">✓ Hex keys</div>
+                <div class="step">✓ Spark plug wrench</div>
+                <div class="step">✓ Tire gauge</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Spare Parts</h4>
+            <div class="steps">
+                <div class="step">✓ Spark plugs</div>
+                <div class="step">✓ Fuses</div>
+                <div class="step">✓ Bulbs</div>
+                <div class="step">✓ Cables</div>
+                <div class="step">✓ Brake pads</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Where to Buy PH</h4>
+            <div class="steps">
+                <div class="step">• Raon Manila</div>
+                <div class="step">• Dealers</div>
+                <div class="step">• Lazada/Shopee</div>
+                <div class="step">• Banawe QC</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="emergencyContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Flat Tire</h4>
+            <p>Emergency fix:</p>
+            <div class="steps">
+                <div class="step">1. Find hole</div>
+                <div class="step">2. Insert plug tool</div>
+                <div class="step">3. Add cement</div>
+                <div class="step">4. Push plug in</div>
+                <div class="step">5. Inflate tire</div>
+            </div>
+            <div class="tip">💡 Temporary lang!</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Dead Battery</h4>
+            <p>Jump start:</p>
+            <div class="steps">
+                <div class="step">1. RED to positive</div>
+                <div class="step">2. BLACK to negative</div>
+                <div class="step">3. Start good bike</div>
+                <div class="step">4. Try dead bike</div>
+            </div>
+            <div class="warning">⚠️ Check polarity!</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Emergency Numbers</h4>
+            <div class="steps">
+                <div class="step">• LTO: 1342</div>
+                <div class="step">• MMDA: 136</div>
+                <div class="step">• Highway: 117</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="performanceContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Exhaust Upgrade</h4>
+            <p>Installation:</p>
+            <div class="steps">
+                <div class="step">1. Remove stock</div>
+                <div class="step">2. Install new</div>
+                <div class="step">3. Tighten evenly</div>
+                <div class="step">4. Re-jet carb</div>
+            </div>
+            <div class="warning">⚠️ Check LTO rules</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Air Filter</h4>
+            <p>High-flow:</p>
+            <div class="steps">
+                <div class="step">1. Remove airbox</div>
+                <div class="step">2. Clean inside</div>
+                <div class="step">3. Install K&N/BMC</div>
+                <div class="step">4. Re-jet if needed</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Mods Ranking</h4>
+            <div class="steps">
+                <div class="step">⭐⭐⭐ Air + rejet</div>
+                <div class="step">⭐⭐⭐ Exhaust</div>
+                <div class="step">⭐⭐ Racing CDI</div>
+                <div class="step">⭐⭐ Sprockets</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tiresContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Wear Patterns</h4>
+            <div class="steps">
+                <div class="step">• CENTER - high pressure</div>
+                <div class="step">• SIDES - low pressure</div>
+                <div class="step">• CUPPING - bad shocks</div>
+                <div class="step">• ONE SIDE - misalign</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Replace When</h4>
+            <div class="steps">
+                <div class="step">1. Tread below 1.6mm</div>
+                <div class="step">2. Sidewall cracks</div>
+                <div class="step">3. Bulges</div>
+                <div class="step">4. Over 5 years old</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>PH Brands</h4>
+            <div class="steps">
+                <div class="step">Budget: IRC, Dunlop</div>
+                <div class="step">Mid: Michelin, Metzeler</div>
+                <div class="step">Premium: Pirelli</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fuelsystemContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Injector Clean</h4>
+            <p>FI bikes:</p>
+            <div class="steps">
+                <div class="step">1. Use cleaner additive</div>
+                <div class="step">2. Pour before gas</div>
+                <div class="step">3. Ride normally</div>
+                <div class="step">4. Every 3,000 km</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Fuel Pump Test</h4>
+            <div class="steps">
+                <div class="step">• Listen for hum at key ON</div>
+                <div class="step">• Check pressure</div>
+                <div class="step">• Test relay/fuse</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Tank Rust</h4>
+            <p>Removal:</p>
+            <div class="steps">
+                <div class="step">1. Drain gas</div>
+                <div class="step">2. Remove tank</div>
+                <div class="step">3. Pour vinegar</div>
+                <div class="step">4. Shake, let sit</div>
+                <div class="step">5. Rinse, dry</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Fuel Economy</h4>
+            <p>Tips:</p>
+            <div class="steps">
+                <div class="step">1. Steady throttle</div>
+                <div class="step">2. Proper tire pressure</div>
+                <div class="step">3. Clean air filter</div>
+                <div class="step">4. Reduce weight</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="steeringContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>Head Bearing</h4>
+            <p>Adjustment:</p>
+            <div class="steps">
+                <div class="step">1. Loosen clamp bolts</div>
+                <div class="step">2. Adjust stem nut</div>
+                <div class="step">3. Tighten clamps</div>
+                <div class="step">4. Test - no play</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Death Wobble</h4>
+            <p>Causes:</p>
+            <div class="steps">
+                <div class="step">• Loose bearings</div>
+                <div class="step">• Unbalanced wheels</div>
+                <div class="step">• Bad tire</div>
+                <div class="step">• Fork misalign</div>
+            </div>
+            <div class="warning">⚠️ Fix ASAP!</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Fork Seals</h4>
+            <p>Replace:</p>
+            <div class="steps">
+                <div class="step">1. Remove fork</div>
+                <div class="step">2. Drain oil</div>
+                <div class="step">3. Remove old seal</div>
+                <div class="step">4. Install new</div>
+                <div class="step">5. Refill oil</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightsContent" class="content-area">
+        <button class="back-btn">← Bumalik</button>
+        
+        <div class="repair-item">
+            <h4>LED Conversion</h4>
+            <p>Upgrade:</p>
+            <div class="steps">
+                <div class="step">1. Choose compatible LED</div>
+                <div class="step">2. Remove halogen</div>
+                <div class="step">3. Install LED</div>
+                <div class="step">4. Secure driver</div>
+                <div class="step">5. Test beams</div>
+            </div>
+            <div class="tip">💡 Brighter, cooler</div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Headlight Aim</h4>
+            <p>Alignment:</p>
+            <div class="steps">
+                <div class="step">1. Park 3-5m from wall</div>
+                <div class="step">2. Mark beam center</div>
+                <div class="step">3. Adjust screws</div>
+                <div class="step">4. Slight downward</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Signal Problems</h4>
+            <div class="steps">
+                <div class="step">Not working:</div>
+                <div class="step">• Check bulb</div>
+                <div class="step">• Test fuse</div>
+                <div class="step">• Check relay</div>
+                <div class="step">Fast blink:</div>
+                <div class="step">• Bulb burnt out</div>
+                <div class="step">• Need load resistor</div>
+            </div>
+        </div>
+
+        <div class="repair-item">
+            <h4>Wiring Repair</h4>
+            <p>Fix damaged:</p>
+            <div class="steps">
+                <div class="step">1. Cut damaged part</div>
+                <div class="step">2. Strip ends</div>
+                <div class="step">3. Twist/solder</div>
+                <div class="step">4. Heat shrink</div>
+                <div class="step">5. Protect from heat</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🇵🇭 Filipino Motorcycle Repair Guide 2026</p>
+        <p>Para sa kaligtasan - wear helmet always!</p>
+    </div>
+
+    <script>
+        var allCards = document.querySelectorAll('.category-card');
+        var allAreas = document.querySelectorAll('.content-area');
+        var mainMenu = document.getElementById('mainMenu');
+        var allBackBtns = document.querySelectorAll('.back-btn');
+
+        for(var i = 0; i < allCards.length; i++) {
+            allCards[i].addEventListener('click', function() {
+                var sec = this.getAttribute('data-section');
+                var target = document.getElementById(sec + 'Content');
+                
+                mainMenu.style.display = 'none';
+                
+                for(var j = 0; j < allAreas.length; j++) {
+                    allAreas[j].classList.remove('active');
+                }
+                
+                if(target) {
+                    target.classList.add('active');
+                }
+            });
+        }
+
+        for(var k = 0; k < allBackBtns.length; k++) {
+            allBackBtns[k].addEventListener('click', function() {
+                for(var m = 0; m < allAreas.length; m++) {
+                    allAreas[m].classList.remove('active');
+                }
+                mainMenu.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
